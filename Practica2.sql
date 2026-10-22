@@ -2,6 +2,8 @@
 
 USE PRACTICA2;
 
+/*Apartado2*/
+
 /*Ej01*/
 SELECT nombre
 FROM articulos
