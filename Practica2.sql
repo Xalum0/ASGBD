@@ -73,4 +73,7 @@ INSERT INTO tecnicos (id, nombre, especialidad, salario) VALUES
 SELECT nombre
 from tecnicos
 GROUP BY especialidad
-HAVING salario > (SELECT AVG(salario) FROM tecnicos GROUP BY especialidad);
+HAVING salario > (
+    SELECT AVG(salario) 
+    FROM tecnicos 
+    GROUP BY especialidad);
