@@ -118,63 +118,73 @@ HAVING SUM(coste_reparacion) >= ALL (
 /*Ej01*/
 SELECT a.nombre as articulo, f.nombre as fabricante
 FROM articulos AS a
-INNER JOIN fabricantes AS f ON a.fabricante_id = f.id
+INNER JOIN fabricantes AS f 
+ON a.fabricante_id = f.id
 WHERE a.precio > 100;
 
 /*Ej02*/
 SELECT f.nombre as fabricante, a.nombre as articulo
 FROM fabricantes AS f
-LEFT JOIN articulos AS a ON a.fabricante_id = f.id;
+LEFT JOIN articulos AS a 
+ON a.fabricante_id = f.id;
 
 /*Ej03*/
 SELECT f.nombre as fabricante, AVG(a.precio) as media_precio
 FROM fabricantes AS f
-INNER JOIN articulos AS a ON a.fabricante_id = f.id
+INNER JOIN articulos AS a 
+ON a.fabricante_id = f.id
 GROUP BY f.id, f.nombre
 HAVING AVG(a.precio) > 150;
 
 /*Ej04*/
 SELECT r.descripcion_averia, r.coste_reparacion, t.nombre as tecnico
 FROM reparaciones AS r
-INNER JOIN tecnicos AS t ON r.tecnico_id = t.id
+INNER JOIN tecnicos AS t 
+ON r.tecnico_id = t.id
 ORDER BY r.coste_reparacion DESC;
 
 /*Ej05*/
 SELECT t.nombre
 FROM tecnicos AS t
-LEFT JOIN reparaciones AS r ON r.tecnico_id = t.id
+LEFT JOIN reparaciones AS r 
+ON r.tecnico_id = t.id
 WHERE r.id IS NULL;
 
 /*Ej06*/
 SELECT t.nombre, SUM(r.coste_reparacion) as total_recaudado
 FROM tecnicos AS t
-INNER JOIN reparaciones AS r ON r.tecnico_id = t.id
+INNER JOIN reparaciones AS r 
+ON r.tecnico_id = t.id
 GROUP BY t.id, t.nombre
 HAVING SUM(r.coste_reparacion) > 100;
 
 /*Ej07*/
 SELECT a.nombre as articulo, f.nombre as fabricante
 FROM articulos AS a
-INNER JOIN fabricantes AS f ON a.fabricante_id = f.id
+INNER JOIN fabricantes AS f 
+ON a.fabricante_id = f.id
 WHERE f.pais IN ('Estados Unidos', 'Taiwán');
 
 /*Ej08*/
 SELECT t.nombre, COUNT(r.id) as num_reparaciones
 FROM tecnicos AS t
-LEFT JOIN reparaciones AS r ON r.tecnico_id = t.id
+LEFT JOIN reparaciones AS r 
+ON r.tecnico_id = t.id
 GROUP BY t.id, t.nombre;
 
 /*Ej09*/
 SELECT f.nombre as fabricante, COUNT(a.id) as num_articulos
 FROM fabricantes AS f
-INNER JOIN articulos AS a ON a.fabricante_id = f.id
+INNER JOIN articulos AS a
+ON a.fabricante_id = f.id
 GROUP BY f.id, f.nombre
 HAVING COUNT(a.id) >= 2;
 
 /*Ej10*/
 SELECT t.nombre, t.especialidad, r.descripcion_averia
 FROM tecnicos AS t
-INNER JOIN reparaciones AS r ON r.tecnico_id = t.id
+INNER JOIN reparaciones AS r 
+ON r.tecnico_id = t.id
 WHERE r.coste_reparacion = (
     SELECT MAX(r2.coste_reparacion)
     FROM reparaciones AS r2
