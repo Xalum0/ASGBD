@@ -50,3 +50,13 @@ osea se, no tiene permisos
 en cambio si se hace a la vista hace:
 select * from tienda_informatica.v_tecnicos_activos;
 */
+
+/*Tarea 4*/
+/*Restricciones de dominio*/
+CREATE VIEW v_articulos_gama_baja AS
+SELECT *
+FROM tienda_informatica.articulos
+WHERE precio <= 50.00
+WITH CHECK OPTION;
+
+/**/
