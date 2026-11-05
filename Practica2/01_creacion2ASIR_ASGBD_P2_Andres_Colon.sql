@@ -3,8 +3,8 @@
     de la tienda de informática y reparaciones.
 */
 
-CREATE DATABASE PRACTICA2;
-USE PRACTICA2;
+CREATE DATABASE tienda_informatica;
+USE tienda_informatica;
 
 /* Tabla de fabricantes */
 CREATE TABLE fabricantes (

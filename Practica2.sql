@@ -1,6 +1,6 @@
 /*Andrés Colón Troya*/
 
-USE PRACTICA2;
+USE tienda_informatica;
 
 /*Apartado2*/
 
